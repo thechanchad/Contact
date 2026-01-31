@@ -3,105 +3,488 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parth Patel | Contact</title>
+<title>Parth Patel — Connect</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
+    :root {
+        --cream: #FAF7F0;
+        --charcoal: #1A1A1A;
+        --sage: #7D8F69;
+        --terracotta: #C65D3B;
+        --gold: #D4AF37;
+        --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
         margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: linear-gradient(135deg, #0A66C2, #1e293b);
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--cream);
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
-        color: #fff;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Organic background texture */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 80%, rgba(125, 143, 105, 0.06) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(198, 93, 59, 0.04) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Grain overlay for texture */
+    body::after {
+        content: '';
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+        animation: grain 8s steps(10) infinite;
+    }
+
+    @keyframes grain {
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-5%, -10%); }
+        20% { transform: translate(-15%, 5%); }
+        30% { transform: translate(7%, -25%); }
+        40% { transform: translate(-5%, 25%); }
+        50% { transform: translate(-15%, 10%); }
+        60% { transform: translate(15%, 0%); }
+        70% { transform: translate(0%, 15%); }
+        80% { transform: translate(3%, 10%); }
+        90% { transform: translate(-10%, 5%); }
+    }
+
+    .container {
+        max-width: 480px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .card {
-        background: #ffffff;
-        color: #111;
+        background: white;
+        border-radius: 0;
+        box-shadow: 
+            0 1px 2px rgba(0, 0, 0, 0.04),
+            0 8px 24px var(--shadow),
+            0 24px 48px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Decorative border */
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 380px;
-        border-radius: 18px;
-        padding: 28px 22px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--sage), var(--terracotta), var(--gold));
+        z-index: 10;
+    }
+
+    .profile-section {
+        padding: 56px 40px 48px;
+        background: linear-gradient(135deg, #F8F6F1 0%, #FFFFFF 100%);
         text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-        animation: fadeIn 0.8s ease-in-out;
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    /* Decorative accent behind photo */
+    .profile-section::before {
+        content: '';
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 170px;
+        height: 170px;
+        background: linear-gradient(135deg, var(--sage), var(--terracotta));
+        opacity: 0.08;
+        border-radius: 50%;
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.05); }
+    }
+
+    .photo-frame {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 32px;
+        z-index: 2;
+    }
+
+    /* Rotating decorative ring */
+    .photo-frame::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        width: calc(100% + 16px);
+        height: calc(100% + 16px);
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 6px solid white;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .photo-frame:hover img {
+        transform: scale(1.05);
     }
 
     h1 {
-        margin: 10px 0 4px;
-        font-size: 26px;
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        font-weight: 900;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
     }
 
-    .title {
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 22px;
+    .subtitle {
+        font-size: 16px;
+        color: #666;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
+        max-width: 340px;
+        margin: 0 auto;
     }
 
-    .btn {
+    .actions {
+        padding: 40px 40px 48px;
+        background: white;
+    }
+
+    .action-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 20px 24px;
+        margin-bottom: 12px;
+        border-radius: 0;
+        background: white;
+        border: 1.5px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .action-link:nth-child(1) { animation-delay: 0.1s; }
+    .action-link:nth-child(2) { animation-delay: 0.2s; }
+    .action-link:nth-child(3) { animation-delay: 0.3s; }
+    .action-link:nth-child(4) { animation-delay: 0.4s; }
+    .action-link:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .action-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: var(--charcoal);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+    }
+
+    .action-link:hover::before {
+        width: 100%;
+    }
+
+    .action-link:hover {
+        border-color: var(--charcoal);
+        transform: translateX(8px);
+        box-shadow: -8px 8px 0 var(--gold);
+    }
+
+    .action-icon {
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        text-decoration: none;
+        font-size: 20px;
+        margin-right: 20px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .action-link:hover .action-icon {
+        transform: scale(1.15) rotate(12deg);
+    }
+
+    .action-content {
+        flex-grow: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .action-title {
+        font-weight: 700;
         font-size: 16px;
-        padding: 14px;
-        border-radius: 10px;
-        margin: 10px 0;
-        font-weight: 600;
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        color: var(--charcoal);
+        margin-bottom: 2px;
+        transition: color 0.3s ease;
     }
 
-    .btn:hover {
-        transform: scale(1.02);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    .action-link:hover .action-title {
+        color: white;
     }
 
-    .call { background: #22c55e; color: #fff; }
-    .email { background: #64748b; color: #fff; }
-    .whatsapp { background: #25D366; color: #fff; }
-    .linkedin { background: #0A66C2; color: #fff; }
-    .save { background: #111827; color: #fff; }
+    .action-desc {
+        font-size: 13px;
+        color: #888;
+        transition: color 0.3s ease;
+    }
+
+    .action-link:hover .action-desc {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .action-arrow {
+        font-size: 18px;
+        color: var(--charcoal);
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+
+    .action-link:hover .action-arrow {
+        color: white;
+        transform: translateX(4px);
+    }
+
+    /* Color variants for icons */
+    .icon-call { background: rgba(125, 143, 105, 0.1); color: var(--sage); }
+    .icon-whatsapp { background: rgba(37, 211, 102, 0.1); color: #25D366; }
+    .icon-email { background: rgba(198, 93, 59, 0.1); color: var(--terracotta); }
+    .icon-linkedin { background: rgba(10, 102, 194, 0.1); color: #0A66C2; }
+    .icon-save { background: rgba(212, 175, 55, 0.1); color: var(--gold); }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+        margin: 32px 0;
+    }
+
+    .save-link {
+        background: linear-gradient(135deg, var(--charcoal), #2A2A2A);
+        border: none;
+        margin-bottom: 0;
+    }
+
+    .save-link::before {
+        background: var(--gold);
+    }
+
+    .save-link .action-icon {
+        background: rgba(212, 175, 55, 0.2);
+        color: var(--gold);
+    }
+
+    .save-link .action-title,
+    .save-link .action-desc,
+    .save-link .action-arrow {
+        color: white;
+    }
+
+    .save-link:hover {
+        box-shadow: -8px 8px 0 var(--sage);
+    }
 
     footer {
-        margin-top: 16px;
-        font-size: 12px;
-        color: #888;
+        margin-top: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #999;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 500;
+        animation: fadeIn 1s ease 0.8s backwards;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+        .container {
+            max-width: 100%;
+        }
+
+        .profile-section {
+            padding: 48px 24px 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+        }
+
+        .actions {
+            padding: 32px 24px 40px;
+        }
+
+        .action-link {
+            padding: 18px 20px;
+        }
+
+        .action-link:hover {
+            transform: translateX(4px);
+            box-shadow: -6px 6px 0 var(--gold);
+        }
+
+        .save-link:hover {
+            box-shadow: -6px 6px 0 var(--sage);
+        }
     }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Parth Patel</h1>
-    <div class="title">B2B Sales Consultant & Strategic Growth Partner</div>
+<div class="container">
+    <div class="card">
+        <div class="profile-section">
+            <div class="photo-frame">
+                <img src="C:\Users\BAPS\Downloads\Contact\Parth Image.jpg" alt="Parth Patel">
+            </div>
+            <h1>Parth Patel</h1>
+            <p class="subtitle">B2B Sales Consultant & Strategic Growth Partner</p>
+        </div>
 
-    <a class="btn call" href="tel:9664634153">📞 Call Now</a>
-    <a class="btn whatsapp" href="https://wa.me/919664634153">💬 WhatsApp</a>
-    <a class="btn email" href="mailto:parthpatelb2b@gmail.com">✉️ Send Email</a>
-    <a class="btn linkedin" href="https://linkedin.com/in/parth-patel-77a636145" target="_blank">🔗 LinkedIn</a>
+        <div class="actions">
+            <a href="tel:9664634153" class="action-link">
+                <div class="action-icon icon-call">📞</div>
+                <div class="action-content">
+                    <div class="action-title">Call Directly</div>
+                    <div class="action-desc">+91 96646 34153</div>
+                </div>
+                <div class="action-arrow">→</div>
+            </a>
 
-    <a class="btn save" href="data:text/vcard;charset=utf-8,
-BEGIN:VCARD
-VERSION:3.0
-N:Patel;Parth
-FN:Parth Patel
-TITLE:B2B Sales Consultant & Strategic Growth Partner
-TEL;TYPE=CELL:9664634153
-EMAIL:parthpatelb2b@gmail.com
-URL:https://linkedin.com/in/parth-patel-77a636145
-END:VCARD
-">📥 Save Contact</a>
+            <a href="https://wa.me/919664634153" class="action-link">
+                <div class="action-icon icon-whatsapp">💬</div>
+                <div class="action-content">
+                    <div class="action-title">WhatsApp</div>
+                    <div class="action-desc">Send me a message</div>
+                </div>
+                <div class="action-arrow">→</div>
+            </a>
 
-    <footer>Tap any button • Works on all phones</footer>
+            <a href="mailto:parthpatelb2b@gmail.com" class="action-link">
+                <div class="action-icon icon-email">✉️</div>
+                <div class="action-content">
+                    <div class="action-title">Email</div>
+                    <div class="action-desc">parthpatelb2b@gmail.com</div>
+                </div>
+                <div class="action-arrow">→</div>
+            </a>
+
+            <a href="https://linkedin.com/in/parth-patel-77a636145" target="_blank" class="action-link">
+                <div class="action-icon icon-linkedin">🔗</div>
+                <div class="action-content">
+                    <div class="action-title">LinkedIn</div>
+                    <div class="action-desc">View my profile</div>
+                </div>
+                <div class="action-arrow">→</div>
+            </a>
+
+            <div class="divider"></div>
+
+            <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AN:Patel;Parth%0AFN:Parth Patel%0ATITLE:B2B Sales Consultant %26 Strategic Growth Partner%0ATEL;TYPE=CELL:9664634153%0AEMAIL:parthpatelb2b@gmail.com%0AURL:https://linkedin.com/in/parth-patel-77a636145%0AEND:VCARD" download="Parth_Patel.vcf" class="action-link save-link">
+                <div class="action-icon icon-save">📥</div>
+                <div class="action-content">
+                    <div class="action-title">Save Contact</div>
+                    <div class="action-desc">Add to your phone</div>
+                </div>
+                <div class="action-arrow">→</div>
+            </a>
+
+            <footer>Let's Connect</footer>
+        </div>
+    </div>
 </div>
 
 </body>
