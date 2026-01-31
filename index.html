@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth Patel | Contact</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #0A66C2, #1e293b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #fff;
+    }
+
+    .card {
+        background: #ffffff;
+        color: #111;
+        width: 100%;
+        max-width: 380px;
+        border-radius: 18px;
+        padding: 28px 22px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+        margin: 10px 0 4px;
+        font-size: 26px;
+    }
+
+    .title {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 22px;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 14px;
+        border-radius: 10px;
+        margin: 10px 0;
+        font-weight: 600;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .call { background: #22c55e; color: #fff; }
+    .email { background: #64748b; color: #fff; }
+    .whatsapp { background: #25D366; color: #fff; }
+    .linkedin { background: #0A66C2; color: #fff; }
+    .save { background: #111827; color: #fff; }
+
+    footer {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #888;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Parth Patel</h1>
+    <div class="title">B2B Sales Consultant & Strategic Growth Partner</div>
+
+    <a class="btn call" href="tel:9664634153">📞 Call Now</a>
+    <a class="btn whatsapp" href="https://wa.me/919664634153">💬 WhatsApp</a>
+    <a class="btn email" href="mailto:parthpatelb2b@gmail.com">✉️ Send Email</a>
+    <a class="btn linkedin" href="https://linkedin.com/in/parth-patel-77a636145" target="_blank">🔗 LinkedIn</a>
+
+    <a class="btn save" href="data:text/vcard;charset=utf-8,
+BEGIN:VCARD
+VERSION:3.0
+N:Patel;Parth
+FN:Parth Patel
+TITLE:B2B Sales Consultant & Strategic Growth Partner
+TEL;TYPE=CELL:9664634153
+EMAIL:parthpatelb2b@gmail.com
+URL:https://linkedin.com/in/parth-patel-77a636145
+END:VCARD
+">📥 Save Contact</a>
+
+    <footer>Tap any button • Works on all phones</footer>
+</div>
+
+</body>
+</html>
